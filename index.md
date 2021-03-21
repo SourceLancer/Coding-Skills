@@ -1,37 +1,137 @@
-## This blog shares some code interview experiences
+# 面试技巧篇 -- 编码风格 (Coding Style)
 
-You can use the [editor on GitHub](https://github.com/SourceLancer/CodingStyle/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Coding Style 在面试中有什么影响？
+算法面试已经是绝大多数high-tech公司的敲门砖，这也导致了求职者花费大量时间准备算法刷题，编码风格作为代码的脸面却往往被忽略。
+在网上也经常有人吐槽，为什么算法写出来了面试还是没过？这种情况大概率是你的编码风格出卖了你。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+对于一个有多年经验的程序员，代码风格是刻在骨子里的。就如同写字一般，写的一首好字的人会更容易给别人留下较好印象。相应的，好的代码风格会让你的面试效果事半功倍，不健康的代码风格却也可能会导致你的面试功亏一篑。要知道，面试官是在寻找自己未来的同事，如果一个人算法能力再强，但写出的代码可读性很差让人头疼，你会愿意让他成为你未来的同事吗？答案是显而易见的。
 
-### Markdown
+## Coding Style 实例
+很多开源的 Coding Style 文档可以在网上直接查找， 比如[Google的开源项目风格指南](https://zh-google-styleguide.readthedocs.io/en/latest/)。但对于准备面试，这些文档显得过于冗长，缺少针对性。在一个45分钟的面试中，我们能被问到的问题大多可以在300行代码之内解决，工程量小。
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+本文将帮助你在10分钟内掌握面试相关的Coding Style技巧。
 
-```markdown
-Syntax highlighted code block
+### 面试中需不需要写代码注释？
+答案是不需要，面试的代码量很小，通常是一眼就可以看懂，面试官不会将注释做为考察代码能力的点。适当添加注释来辅助自己完成算法是被允许的。
 
-# Header 1
-## Header 2
-### Header 3
+### 命名规则
+在所有的编码规则中，命名规则是面试中一定逃不掉且也是对代码可读性影响最大的。只要牢记以下几点命名规则，瞬间就可以让你的形象从代码小白变成老程序员。
 
-- Bulleted
-- List
+#### 使用驼峰式命名法（Camel Case）
+- 函数名，类名使用大驼峰式命名法（Upper Camel Case）。
+- 变量名使用小驼峰式命名法（Lower Camel Case）。
+- 尽量不要缩写。不要担心命名过长，约定俗成的缩写除外（如：num）。
 
-1. Numbered
-2. List
+下面以leet code上的高频面试题“[Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)”的Python代码为例说明不同命名风格之间的差距：
 
-**Bold** and _Italic_ and `Code` text
+**代码小白**
+```
+def substring(s):  # 函数名应遵循 Upper Camel Case 命名规则
+  n = len(s)  # 意义不明确的变量命名
+  ans = 0  # 不建议的缩写
+  mp = {} # 不建议的缩写
+  
+  i = 0  # 意义不明确的变量命名
+  for j in range(n): # 循环中的i, j是约定俗成的方式，是被允许的
+    if s[j] in mp:
+      i = max(mp[s[j]], i)
+      
+    ans = max(ans, j - i + 1)
+    mp[s[j]] = j + 1
 
-[Link](url) and ![Image](src)
+  return ans
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+**潜在的同事**
+```
+def LengthOfLongestSubstring(input_string: str) -> int:  # 函数名遵循 Upper Camel Case 命名规则
+  longest_length = 0  # 变量名遵循 Lower Camel Case 命名规则
+  hash_map = {}  # 意义明确的变量名
+  
+  index_left = 0 # 意义明确的变量名
+  for index_right in input_string:
+    character = input_string[i]
+    if character in hash_map:
+      index = max(character, index_right)
+    
+    longest_length = max(longest_length, index_right - index_left + 1)
+    hash_map[character] = index_right + 1
+    
+  return longest_length
+```
 
-### Jekyll Themes
+### 代码模块化
+- 当代码量稍大，或明显有重复应用的子函数时，应有意识的将代码拆分成若干个子函数，提高代码的可读性。
+- 函数内部，尽量减少嵌套（如：if...elif...else...）
+- 函数中要加必要的 corner case test。
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/SourceLancer/CodingStyle/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+下面是以经典题目“[Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)为例说明如何代码模块化。
 
-### Support or Contact
+***代码小白***
+```
+def letterCombinations(digits: str) -> List[str]:
+  # 代码格式可读性差
+  mapper = {'2' : ['a','b','c'],'3' : ['d','e','f'],'4' : ['g','h','i'],'5' : ['j','k','l'],'6' : ['m','n','o'],'7' : ['p','q','r','s'],'8' : ['t','u','v'],'9' : ['w','x','y','z']}
+  l = len(digits)  # 意义不明确的变量命名
+  if l == 0:  # 应尽量减少嵌套
+    return []
+  elif l == 1:
+    return mapper[digits]
+  else:
+    idx = 1
+    array = []
+    
+    # 可读性差
+    while idx < l:
+      newarray = []  # 变量命名未遵循Lower Camel Case命名规则。
+      for combo1 in array:
+        newarray.append(combo1)
+        for combo2 in mapper[digits[idx]]:
+          newarray.append(combo1 + combo2)
+      array = copy.deepcopy(newarray)
+    idx += 1
+    
+    return newarray
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+***潜在的同事***
+```
+def LetterCombinations(digits: str) -> List[str]:
+  # 代码格式可读性好
+  mapper = {'2' : ['a','b','c'],
+            '3' : ['d','e','f'],
+            '4' : ['g','h','i'],
+            '5' : ['j','k','l'],
+            '6' : ['m','n','o'],
+            '7' : ['p','q','r','s'],
+            '8' : ['t','u','v'],
+            '9' : ['w','x','y','z']}
+
+  length = len(digits)
+  # Corner case test.
+  if not length:
+    return []
+  if length == 1:
+    return mapper[digits]
+    
+  return SearchAlgorithm(digits, hash_map)
+
+# 子函数使代码逻辑更简洁
+def SearchAlgorithm(digits: str, hash_map: Dict[str, List[str]])-> List[str]:
+  if not digits:
+    return []
+  if len(digits) == 1:
+    return hash_map[digits[0]]
+
+  pivot = int(len(digits) / 2)
+  left = SearchAlgorithm(digit_lst[:pivot])
+  right = SearchAlgorithm(digit_lst[pivot:])
+
+  result = []
+  for i in left:
+    for j in right:
+      result.append(i+j)
+
+  return result
+```
+
