@@ -24,7 +24,7 @@
 
 下面以leet code上的高频面试题“[Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)”的Python代码为例说明不同命名风格之间的差距：
 
-***代码小白***
+***代码小白↓***
 ```
 def substring(s):  # 函数名应遵循 Upper Camel Case 命名规则
   n = len(s)  # 意义不明确的变量命名
@@ -42,7 +42,7 @@ def substring(s):  # 函数名应遵循 Upper Camel Case 命名规则
   return ans
 ```
 
-***潜在的同事***
+***潜在的同事↓***
 ```
 def LengthOfLongestSubstring(input_string: str) -> int:  # 函数名遵循 Upper Camel Case 命名规则
   longest_length = 0  # 变量名遵循 Lower Camel Case 命名规则
@@ -69,7 +69,7 @@ def LengthOfLongestSubstring(input_string: str) -> int:  # 函数名遵循 Upper
 
 下面是以经典题目“[Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)”为例说明如何代码模块化。
 
-***代码小白***
+***代码小白↓***
 ```
 def letterCombinations(digits: str) -> List[str]:
   # 代码格式可读性差
@@ -96,7 +96,7 @@ def letterCombinations(digits: str) -> List[str]:
     return newarray
 ```
 
-***潜在的同事***
+***潜在的同事↓***
 ```
 def LetterCombinations(digits: str) -> List[str]:
   # 代码格式可读性好
