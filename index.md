@@ -11,7 +11,7 @@
 
 本文将帮助你在10分钟内掌握面试相关的Coding Style技巧。
 
-[other page url test] (interview/interview-algorithm.md)
+[other page url test] (https://github.com/SourceLancer/Coding-Skills/interview/interview-algorithm.md)
 
 ### 面试中需不需要写代码注释？
 答案是不需要，面试的代码量很小，通常是一眼就可以看懂，面试官不会将注释做为考察代码能力的点。适当添加注释来辅助自己完成算法是被允许的。
