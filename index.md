@@ -132,6 +132,6 @@ def SearchAlgorithm(digits: str, hash_map: Dict[str, List[str]])-> List[str]:
     for j in right:
       result.append(i+j)
 
-  return result
+  return result 
 ```
 
