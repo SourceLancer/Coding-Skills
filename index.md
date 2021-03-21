@@ -18,13 +18,13 @@
 在所有的编码规则中，命名规则是面试中一定逃不掉且也是对代码可读性影响最大的。只要牢记以下几点命名规则，瞬间就可以让你的形象从代码小白变成老程序员。
 
 #### 使用驼峰式命名法（Camel Case）
-- 函数名，类名使用大驼峰式命名法（Upper Camel Case）。
-- 变量名使用小驼峰式命名法（Lower Camel Case）。
+- 函数名，类名使用大驼峰式命名法(Upper Camel Case)，例：UpperCamelCase。
+- 变量名使用小驼峰式命名法(Lower Camel Case)，例: lower_camel_case。
 - 尽量不要缩写。不要担心命名过长，约定俗成的缩写除外（如：num）。
 
 下面以leet code上的高频面试题“[Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)”的Python代码为例说明不同命名风格之间的差距：
 
-**代码小白↓**
+***代码小白***
 ```
 def substring(s):  # 函数名应遵循 Upper Camel Case 命名规则
   n = len(s)  # 意义不明确的变量命名
@@ -42,7 +42,7 @@ def substring(s):  # 函数名应遵循 Upper Camel Case 命名规则
   return ans
 ```
 
-**潜在的同事↓**
+***潜在的同事***
 ```
 def LengthOfLongestSubstring(input_string: str) -> int:  # 函数名遵循 Upper Camel Case 命名规则
   longest_length = 0  # 变量名遵循 Lower Camel Case 命名规则
@@ -60,14 +60,16 @@ def LengthOfLongestSubstring(input_string: str) -> int:  # 函数名遵循 Upper
   return longest_length
 ```
 
+从以上两段代码的比较中我们可以看出，在算法完全相同的前提下，良好的命名规则会大大的提升代码的可读性，也是编程经验的最直接的表现。
+
 ### 代码模块化
 - 当代码量稍大，或明显有重复应用的子函数时，应有意识的将代码拆分成若干个子函数，提高代码的可读性。
 - 函数内部，尽量减少嵌套（如：if...elif...else...）
 - 函数中要加必要的 corner case test。
 
-下面是以经典题目“[Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)为例说明如何代码模块化。
+下面是以经典题目“[Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)”为例说明如何代码模块化。
 
-***代码小白↓***
+***代码小白***
 ```
 def letterCombinations(digits: str) -> List[str]:
   # 代码格式可读性差
@@ -94,7 +96,7 @@ def letterCombinations(digits: str) -> List[str]:
     return newarray
 ```
 
-***潜在的同事↓***
+***潜在的同事***
 ```
 def LetterCombinations(digits: str) -> List[str]:
   # 代码格式可读性好
@@ -135,3 +137,7 @@ def SearchAlgorithm(digits: str, hash_map: Dict[str, List[str]])-> List[str]:
   return result 
 ```
 
+从以上两段代码可以看出，合理的运用子函数，会大大提升代码可读性。同时，子函数的使用会更方便递归调用算法的实现。
+
+
+只要在日常的算法练习中留心***命名规则***和***算法模块化***这两点，会让你在面试中的表现事半功倍，成为面试官的首选。
