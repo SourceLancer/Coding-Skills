@@ -1,4 +1,4 @@
-## This blog shares some code interview experience 
+## This blog shares some code interview experiences
 
 You can use the [editor on GitHub](https://github.com/SourceLancer/CodingStyle/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
