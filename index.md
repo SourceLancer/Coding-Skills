@@ -142,4 +142,4 @@ def SearchAlgorithm(digits: str, hash_map: Dict[str, List[str]])-> List[str]:
 
 只要在日常的算法练习中留心***命名规则***和***算法模块化***这两点，会让你在面试中的表现事半功倍，成为面试官的首选。
 
-[NEXT 面试过程中的高频算法](https://sourcelancer.github.io/RegularlyAppearedTopics/)
+[NEXT 面试过程中的高频算法](https://sourcelancer.github.io/RegularlyAppearedTopics/) [主页](https://sourcelancer.github.io/MINE/)
